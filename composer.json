@@ -1,10 +1,10 @@
 {
-    "name":"soundasleep/php-html5lib"
+    "name":"soundasleep/html5lib-php"
     ,"description": "A PHP implementations of a HTML parser based on the WHATWG HTML5 specification."
-    ,"version": "0.1.1"
+    ,"version": "0.1.2"
     ,"type":"library"
     ,"keywords": [ "PHP", "HTML5" ]
-    ,"homepage": "https://github.com/soundasleep/php-html5lib"
+    ,"homepage": "https://github.com/soundasleep/html5lib-php"
     ,"license": "MIT"
     ,"authors": [
         {
