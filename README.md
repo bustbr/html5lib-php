@@ -10,6 +10,19 @@ However, the code is very close to spec and passes 100% of tests
 not related to parse errors.  Nevertheless, expect to have to update
 your code on the next upgrade.
 
+This fork combines the work of [html5lib/html5lib-php](https://github.com/html5lib/html5lib-php) 
+and [lavoiesl/php-html5lib](https://github.com/lavoiesl/php-html5lib),
+and can be used with [composer](https://getcomposer.org/)
+through [Packagist](https://packagist.org/packages/soundasleep/html5lib-php):
+
+```json
+{
+  "require": {
+    "soundasleep/html5lib-php": "~0.1.3"
+  }
+}
+```
+
 
 ## Usage notes
 
