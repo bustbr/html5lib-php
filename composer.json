@@ -33,7 +33,7 @@
     }
     ,"autoload":{
         "psr-0":{
-            "HTML5Lib":"src/"
+            "HTML5Lib":"library/HTML5/"
             ,"HTML5Lib\\Tests":"tests/"
         }
     }
