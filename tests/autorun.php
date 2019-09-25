@@ -61,26 +61,26 @@ function str_dump($string) {
  */
 function token_dump($token) {
     switch ($token['type']) {
-    case HTML5_Tokenizer::DOCTYPE:
+    case \HTML5Lib\Tokenizer::DOCTYPE:
         echo "<!doctype ...>\n";
         break;
-    case HTML5_Tokenizer::STARTTAG:
+    case \HTML5Lib\Tokenizer::STARTTAG:
         $attr = '';
         foreach ($token['attr'] as $kp) {
             $attr .= ' '.$kp['name'] . '="' . $kp['value'] . '"';
         }
         echo "<{$token['name']}$attr>\n";
         break;
-    case HTML5_Tokenizer::ENDTAG:
+    case \HTML5Lib\Tokenizer::ENDTAG:
         echo "</{$token['name']}>\n";
         break;
-    case HTML5_Tokenizer::COMMENT:
+    case \HTML5Lib\Tokenizer::COMMENT:
         echo "<!-- {$token['data']} -->\n";
         break;
-    case HTML5_Tokenizer::CHARACTER:
+    case \HTML5Lib\Tokenizer::CHARACTER:
         echo '"'.$token['data'].'"'."\n";
         break;
-    case HTML5_Tokenizer::EOF:
+    case \HTML5Lib\Tokenizer::EOF:
         echo "EOF\n";
         break;
     }

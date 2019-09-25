@@ -1,12 +1,14 @@
 <?php
 
-class HTML5_TestableTokenizer extends HTML5_Tokenizer
+namespace HTML5Lib\Tests;
+
+class TestableTokenizer extends \HTML5Lib\Tokenizer
 {
     public $outputTokens = array();
     private $_contentModelFlag;
     private $_lastStartFlag;
 
-    // this interface does not match HTML5_Tokenizer's. It might make
+    // this interface does not match \HTML5Lib\Tokenizer's. It might make
     // more sense though
     public function __construct($data, $contentModelFlag, $lastStartFlag = null) {
         parent::__construct($data);

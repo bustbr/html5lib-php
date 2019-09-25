@@ -1,11 +1,13 @@
 <?php
 
+namespace HTML5Lib\Tests;
+
 require_once dirname(__FILE__) . '/../autorun.php';
 
-class HTML5_InputStreamTest extends UnitTestCase
+class InputStreamTest extends UnitTestCase
 {   
     public function invalidReplaceTestHandler($input, $name) {
-        $stream = new HTML5_InputStream($input);
+        $stream = new \HTML5Lib\InputStream($input);
         $this->assertIdentical("\xEF\xBF\xBD", $stream->remainingChars(), $name);
     }
     
@@ -38,33 +40,33 @@ class HTML5_InputStreamTest extends UnitTestCase
     }
     
     public function testStripLeadingBOM() {
-        $leading = new HTML5_InputStream("\xEF\xBB\xBFa");
+        $leading = new \HTML5Lib\InputStream("\xEF\xBB\xBFa");
         $this->assertIdentical('a', $leading->char(), 'BOM should be stripped');
     }
     
     public function testZWNBSP() {
-        $stream = new HTML5_InputStream("a\xEF\xBB\xBF");
+        $stream = new \HTML5Lib\InputStream("a\xEF\xBB\xBF");
         $this->assertIdentical("a\xEF\xBB\xBF", $stream->remainingChars(), 'A non-leading U+FEFF (BOM/ZWNBSP) should remain');
     }
     
     public function testNull() {
-        $stream = new HTML5_InputStream("\0\0\0");
+        $stream = new \HTML5Lib\InputStream("\0\0\0");
         $this->assertIdentical("\xEF\xBF\xBD\xEF\xBF\xBD\xEF\xBF\xBD", $stream->remainingChars(), 'Null character should be replaced by U+FFFD');
         $this->assertIdentical(3, count($stream->errors), 'Null character should be throw parse error');
     }
     
     public function testCRLF() {
-        $stream = new HTML5_InputStream("\r\n");
+        $stream = new \HTML5Lib\InputStream("\r\n");
         $this->assertIdentical("\n", $stream->remainingChars(), 'CRLF should be replaced by LF');
     }
     
     public function testCR() {
-        $stream = new HTML5_InputStream("\r");
+        $stream = new \HTML5Lib\InputStream("\r");
         $this->assertIdentical("\n", $stream->remainingChars(), 'CR should be replaced by LF');
     }
     
     public function invalidParseErrorTestHandler($input, $numErrors, $name) {
-        $stream = new HTML5_InputStream($input);
+        $stream = new \HTML5Lib\InputStream($input);
         $this->assertIdentical($input, $stream->remainingChars(), $name . ' (stream content)');
         $this->assertIdentical($numErrors, count($stream->errors), $name . ' (number of errors)');
     }

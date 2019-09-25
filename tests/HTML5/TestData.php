@@ -1,9 +1,11 @@
 <?php
 
+namespace HTML5Lib\Tests;
+
 /**
  * Interface for retreiving test files. Also represents a .dat file.
  */
-class HTML5_TestData
+class TestData
 {
     /**
      * Retrieves a list of test filenames from a directory.
@@ -19,7 +21,7 @@ class HTML5_TestData
      * to test files in the testdata directory.
      */
     static public function generateTestCases($base, $prefix, $type, $glob) {
-        foreach (HTML5_TestData::getList($type, $glob) as $filename) {
+        foreach (static::getList($type, $glob) as $filename) {
             $name = str_replace('-', '', basename($filename));
             $name = ucfirst(substr($name, 0, strcspn($name, '.')));
             if ($type === 'tree-construction') {
@@ -110,24 +112,24 @@ class HTML5_TestData
                 case XML_ELEMENT_NODE:
                     $ns = '';
                     switch ($next->namespaceURI) {
-                    case HTML5_TreeBuilder::NS_MATHML:
+                    case \HTML5Lib\TreeBuilder::NS_MATHML:
                         $ns = 'math '; break;
-                    case HTML5_TreeBuilder::NS_SVG:
+                    case \HTML5Lib\TreeBuilder::NS_SVG:
                         $ns = 'svg '; break;
                     }
                     $text = "<{$ns}{$next->tagName}>";
                     foreach ($next->attributes as $attr) {
                         $ans = '';
                         switch ($attr->namespaceURI) {
-                        case HTML5_TreeBuilder::NS_MATHML:
+                        case \HTML5Lib\TreeBuilder::NS_MATHML:
                             $ans = 'math '; break;
-                        case HTML5_TreeBuilder::NS_SVG:
+                        case \HTML5Lib\TreeBuilder::NS_SVG:
                             $ans = 'svg '; break;
-                        case HTML5_TreeBuilder::NS_XLINK:
+                        case \HTML5Lib\TreeBuilder::NS_XLINK:
                             $ans = 'xlink '; break;
-                        case HTML5_TreeBuilder::NS_XML:
+                        case \HTML5Lib\TreeBuilder::NS_XML:
                             $ans = 'xml '; break;
-                        case HTML5_TreeBuilder::NS_XMLNS:
+                        case \HTML5Lib\TreeBuilder::NS_XMLNS:
                             $ans = 'xmlns '; break;
                         }
                         // XSKETCHY: needed for our horrible xlink hack

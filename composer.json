@@ -32,9 +32,9 @@
         ,"irc": "irc://irc.freenode.org/whatwg"
     }
     ,"autoload":{
-        "psr-0":{
-            "HTML5Lib":"library/HTML5/"
-            ,"HTML5Lib\\Tests":"tests/"
+        "psr-4":{
+            "HTML5Lib\\":"library/HTML5/"
+            ,"HTML5Lib\\Tests\\":"tests/"
         }
     }
 }

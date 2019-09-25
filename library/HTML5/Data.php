@@ -1,8 +1,9 @@
 <?php
 
+namespace HTML5Lib;
 // warning: this file is encoded in UTF-8!
 
-class HTML5_Data
+class Data
 {
 
     // at some point this should be moved to a .ser file. Another

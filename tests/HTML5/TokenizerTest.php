@@ -1,9 +1,11 @@
 <?php
 
+namespace HTML5Lib\Tests;
+
 require_once dirname(__FILE__) . '/../autorun.php';
 
-SimpleTest::ignore('HTML5_TokenizerHarness');
-abstract class HTML5_TokenizerHarness extends HTML5_JSONHarness
+SimpleTest::ignore(TokenizerHarness::class);
+abstract class TokenizerHarness extends JSONHarness
 {
     public function invoke($test) {
         //echo get_class($this) . ': ' . $test->description ."\n";
@@ -70,9 +72,9 @@ abstract class HTML5_TokenizerHarness extends HTML5_JSONHarness
         return $ret;
     }
     public function tokenize($test, $flag) {
-        $flag = constant("HTML5_Tokenizer::$flag");
+        $flag = constant("\HTML5Lib\Tokenizer::$flag");
         if (!isset($test->lastStartTag)) $test->lastStartTag = null;
-        $tokenizer = new HTML5_TestableTokenizer($test->input, $flag, $test->lastStartTag);
+        $tokenizer = new TestableTokenizer($test->input, $flag, $test->lastStartTag);
         $GLOBALS['TIME'] -= get_microtime();
         $tokenizer->parse();
         $GLOBALS['TIME'] += get_microtime();
@@ -81,8 +83,8 @@ abstract class HTML5_TokenizerHarness extends HTML5_JSONHarness
 }
 
 // generate test suites for tokenizer
-HTML5_TestData::generateTestCases(
-    'HTML5_TokenizerHarness',
-    'HTML5_TokenizerTestOf',
+TestData::generateTestCases(
+    TokenizerHarness::class,
+    'TokenizerTestOf',
     'tokenizer', '*.test'
 );
