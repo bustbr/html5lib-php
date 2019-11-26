@@ -3411,6 +3411,11 @@ class TreeBuilder {
                 $node = $context;
             }
 
+            if (!$node) {
+                $this->mode = self::IN_BODY;
+                break;
+            }
+
             /* 4. If node is a select element, then switch the insertion mode to
             "in select" and abort these steps. (fragment case) */
             if($node->tagName === 'select') {
